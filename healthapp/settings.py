@@ -29,13 +29,11 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'foodi-tracker.herokuapp.com']
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -44,6 +42,8 @@ INSTALLED_APPS = [
     'foodi',
     'social_django',
     'dj_database_url',
+    'jquery',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
@@ -109,6 +109,8 @@ db_url = env.get('DATABASE_URL', False)
 if db_url != False:
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
+    SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+
 
 
 # Password validation
@@ -148,3 +150,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
