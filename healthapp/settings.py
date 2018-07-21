@@ -29,7 +29,6 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'foodi-tracker.herokuapp.com']
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 
 # Application definition
@@ -109,6 +108,8 @@ db_url = env.get('DATABASE_URL', False)
 if db_url != False:
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
+    SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+
 
 
 # Password validation
