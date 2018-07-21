@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'foodi',
     'social_django',
     'dj_database_url',
+    'jquery'
 ]
 
 MIDDLEWARE = [
