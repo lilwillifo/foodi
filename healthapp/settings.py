@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ['localhost', 'foodi-tracker.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -43,7 +42,8 @@ INSTALLED_APPS = [
     'foodi',
     'social_django',
     'dj_database_url',
-    'jquery'
+    'jquery',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
