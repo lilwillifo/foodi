@@ -9,6 +9,9 @@ class FoodService():
         self.cholesterol = round(food_data['nf_cholesterol'], 1)
         self.sodium = round(food_data['nf_sodium'], 1)
         self.carbs = round(food_data['nf_total_carbohydrate'])
+        self.fiber = round(food_data['nf_dietary_fiber'], 1)
+        self.sugar = round(food_data['nf_sugars'], 1)
+        self.protein = round(food_data['nf_protein'], 1)
         self.calorieIntake = 2000
         self.dailyValueTotalFat = 65
         self.dailyValueSatFat = 20
@@ -37,3 +40,6 @@ class FoodService():
 
     def carb_percent(self):
         return round(self.carbs / self.dailyValueCarb, 2) * 100
+
+    def fiber_percent(self):
+        return round(self.fiber / self.dailyValueFiber, 2) * 100
