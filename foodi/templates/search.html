@@ -33,40 +33,36 @@
   	<div class="nf-amount-per-serving" tabindex="0">Amount per serving</div>
   	<div class="nf-calories" tabindex="0">
   		<span class="">Calories</span>
-  		<!-- <span class="nf-pr" itemprop="calories">{{ food_data.nf_calories }}</span> -->
+  		<span class="nf-pr" itemprop="calories">{{ food.calories }}</span>
   	</div>
   	<div class="nf-bar1"></div>
   	<div class="nf-line nf-text-right">
   		<span class="nf-highlight nf-percent-dv">% Daily Value*</span>
   	</div>
   	<div class="nf-line" tabindex="0">
-  		<span class="nf-highlight nf-pr" aria-hidden="true">0%</span>
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.fat_percent }}%</span>
   		<span class="nf-highlight">Total Fat</span>
-  		<span class="" itemprop="fatContent">0<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
+  		<span class="" itemprop="fatContent">{{ food.total_fat }}<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
   	</div>
   	<div class="nf-line nf-indent" tabindex="0">
-  		<span class="nf-highlight nf-pr" aria-hidden="true">0%</span>
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.sat_fat_percent }}%</span>
   		<span class="">Saturated Fat</span>
-  		<span class="" itemprop="saturatedFatContent">0<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
-  	</div>
-  	<div class="nf-line nf-indent" tabindex="0">
-  		<span class=""><em>Trans</em> Fat</span>
-  		<span class="" itemprop="transFatContent">0<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
+  		<span class="" itemprop="saturatedFatContent">{{ food.sat_fat }}<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
   	</div>
   	<div class="nf-line" tabindex="0">
-  		<span class="nf-highlight nf-pr" aria-hidden="true">0%</span>
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.cholesterol_percent }}%</span>
   		<span class="nf-highlight">Cholesterol</span>
-  		<span class="" itemprop="cholesterolContent">0<span aria-hidden="true">mg</span><span class="sr-only"> milligrams</span></span>
+  		<span class="" itemprop="cholesterolContent">{{ food.cholesterol }}<span aria-hidden="true">mg</span><span class="sr-only"> milligrams</span></span>
   	</div>
   	<div class="nf-line" tabindex="0">
-  		<span class="nf-highlight nf-pr" aria-hidden="true">0%</span>
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.sodium_percent }}%</span>
   		<span class="nf-highlight">Sodium</span>
-  		<span class="" itemprop="cholesterolContent">0<span aria-hidden="true">mg</span><span class="sr-only"> milligrams</span></span>
+  		<span class="" itemprop="cholesterolContent">{{ food.sodium }}<span aria-hidden="true">mg</span><span class="sr-only"> milligrams</span></span>
   	</div>
   	<div class="nf-line" tabindex="0">
-  		<span class="nf-highlight nf-pr" aria-hidden="true">0%</span>
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.carb_percent }}%</span>
   		<span class="nf-highlight">Total Carbohydrates</span>
-  		<span class="" itemprop="carbohydrateContent">0<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
+  		<span class="" itemprop="carbohydrateContent">{{ food.carbs }}<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
   	</div>
   	<div class="nf-line nf-indent" tabindex="0">
   		<span class="nf-highlight nf-pr" aria-hidden="true">0%</span>
