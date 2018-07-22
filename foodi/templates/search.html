@@ -3,12 +3,13 @@
 <hr>
 <hr>
 <hr>
+<div id="search">
   <div itemscope="" itemtype="http://schema.org/NutritionInformation" class="nf" style=" width: 280px;">
   	<div class="nf-title" tabindex="0">Nutrition Facts</div>
   	<div class="nf-line">
   		<div class="nf-serving">
   			<div tabindex="0"><!-- opening for serving size div -->
-  				Serving Size: <span itemprop="servingSize"> {{ search_result }} </span>
+  				Serving Size: <span itemprop="servingSize"> {{ food.serving_qty }} </span>
   			</div><!-- closing for serving size div -->
 
   			<div class="nf-arrows">
@@ -21,8 +22,7 @@
 
   			<div class="nf-item-name " tabindex="0">
   				<div>
-  					Item / Ingredient Name
-
+  					{{ food.name }}
   				</div>
   			</div>
   		</div><!-- end of class="nf-serving" -->
@@ -33,7 +33,7 @@
   	<div class="nf-amount-per-serving" tabindex="0">Amount per serving</div>
   	<div class="nf-calories" tabindex="0">
   		<span class="">Calories</span>
-  		<span class="nf-pr" itemprop="calories">0</span>
+  		<!-- <span class="nf-pr" itemprop="calories">{{ food_data.nf_calories }}</span> -->
   	</div>
   	<div class="nf-bar1"></div>
   	<div class="nf-line nf-text-right">
@@ -117,4 +117,5 @@
 
   	</div>
   </div>
+</div>
   {% endblock %}

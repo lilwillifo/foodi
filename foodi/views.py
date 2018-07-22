@@ -4,6 +4,7 @@ from django.http import HttpResponse
 import requests
 from decouple import config
 from django.template import loader
+from foodi.food import FoodService
 
 def home(request):
     return render(request, 'home.html')
@@ -23,12 +24,11 @@ def search(request):
 
         response = requests.post(url, headers=headers, data=payload)
         search_result = response.json()
-
+        food = FoodService(search_result['foods'][0])
 
         # import code; code.interact(local=dict(globals(), **locals()))
     template = loader.get_template('search.html')
     context = {
-        'search_result': search_result
+        'food': food
     }
     return HttpResponse(template.render(context))
-    # return render(request, 'search.html' % search_result)
