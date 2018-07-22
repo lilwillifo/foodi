@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import requests
 from decouple import config
+from django.template import loader
 
 def home(request):
     return render(request, 'home.html')
@@ -19,10 +20,15 @@ def search(request):
                    'x-app-key': config('NIX_APP_KEY'),
                    'x-remote-user-id': '0'}
         payload = {'query': food}
-        # import code; code.interact(local=dict(globals(), **locals()))
 
         response = requests.post(url, headers=headers, data=payload)
         search_result = response.json()
 
 
-    return render(request, 'search.html', {'search_result': search_result})
+        # import code; code.interact(local=dict(globals(), **locals()))
+    template = loader.get_template('search.html')
+    context = {
+        'search_result': search_result
+    }
+    return HttpResponse(template.render(context))
+    # return render(request, 'search.html' % search_result)
