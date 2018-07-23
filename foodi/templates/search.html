@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+<hr>
+<hr>
+<hr>
+<div id="search">
+  <div itemscope="" itemtype="http://schema.org/NutritionInformation" class="nf" style=" width: 280px;">
+  	<div class="nf-title" tabindex="0">Nutrition Facts</div>
+  	<div class="nf-line">
+  		<div class="nf-serving">
+  			<div tabindex="0"><!-- opening for serving size div -->
+  				Serving Size: <span itemprop="servingSize"> {{ food.serving_qty }} {{ food.serving_unit }} </span>
+  			</div><!-- closing for serving size div -->
+
+  			<div class="nf-arrows">
+  				<div class="nf-unitQuantityUp nf-arrow-up" aria-label="Increase the Quantity Arrow" rel="nofollow" tabindex="0"></div>
+  				<div class="nf-unitQuantityDown nf-arrow-down" aria-label="Decrease the Quantity Arrow" rel="nofollow" tabindex="0"></div>
+  			</div><!-- closing class="nf-arrows v1" -->
+
+  			<input type="text" value="1" class="nf-unitQuantityBox nf-modifier-field" data-role="none" aria-label="Change the Quantity Textbox">
+  			<input type="hidden" value="1" id="nf-nixLabelBeforeQuantity">
+
+  			<div class="nf-item-name " tabindex="0">
+  				<div>
+  					{{ food.name }}
+  				</div>
+  			</div>
+  		</div><!-- end of class="nf-serving" -->
+
+  	</div><!-- end of class="nf-line" -->
+
+  	<div class="nf-bar2"></div>
+  	<div class="nf-amount-per-serving" tabindex="0">Amount per serving</div>
+  	<div class="nf-calories" tabindex="0">
+  		<span class="">Calories</span>
+  		<span class="nf-pr" itemprop="calories">{{ food.calories }}</span>
+  	</div>
+  	<div class="nf-bar1"></div>
+  	<div class="nf-line nf-text-right">
+  		<span class="nf-highlight nf-percent-dv">% Daily Value*</span>
+  	</div>
+  	<div class="nf-line" tabindex="0">
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.fat_percent }}%</span>
+  		<span class="nf-highlight">Total Fat</span>
+  		<span class="" itemprop="fatContent">{{ food.total_fat }}<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
+  	</div>
+  	<div class="nf-line nf-indent" tabindex="0">
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.sat_fat_percent }}%</span>
+  		<span class="">Saturated Fat</span>
+  		<span class="" itemprop="saturatedFatContent">{{ food.sat_fat }}<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
+  	</div>
+  	<div class="nf-line" tabindex="0">
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.cholesterol_percent }}%</span>
+  		<span class="nf-highlight">Cholesterol</span>
+  		<span class="" itemprop="cholesterolContent">{{ food.cholesterol }}<span aria-hidden="true">mg</span><span class="sr-only"> milligrams</span></span>
+  	</div>
+  	<div class="nf-line" tabindex="0">
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.sodium_percent }}%</span>
+  		<span class="nf-highlight">Sodium</span>
+  		<span class="" itemprop="cholesterolContent">{{ food.sodium }}<span aria-hidden="true">mg</span><span class="sr-only"> milligrams</span></span>
+  	</div>
+  	<div class="nf-line" tabindex="0">
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.carb_percent }}%</span>
+  		<span class="nf-highlight">Total Carbohydrates</span>
+  		<span class="" itemprop="carbohydrateContent">{{ food.carbs }}<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
+  	</div>
+  	<div class="nf-line nf-indent" tabindex="0">
+  		<span class="nf-highlight nf-pr" aria-hidden="true">{{ food.fiber_percent }}%</span>
+  		<span class="">Dietary Fiber</span>
+  		<span class="" itemprop="fiberContent">{{ food.fiber }}<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
+  	</div>
+  	<div class="nf-line nf-indent" tabindex="0">
+  		<span class="">Sugars</span>
+  		<span class="" itemprop="sugarContent">{{ food.sugar }}<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
+  	</div>
+  	<div class="nf-line" tabindex="0">
+  		<span class="nf-highlight">Protein</span>
+  		<span class="" itemprop="proteinContent">{{ food.protein }}<span aria-hidden="true">g</span><span class="sr-only"> grams</span></span>
+  	</div>
+  	<div class="nf-bar2"></div>
+  	<div class="nf-bar1"></div>
+  	<div class="nf-footnote">
+  		<span tabindex="0">The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2000 calories a day is used for general nutrition advice.</span>
+  			<br>
+
+  	</div>
+  </div>
+</div>
+  {% endblock %}
