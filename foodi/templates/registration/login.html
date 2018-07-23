@@ -1,14 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
-  <br>
-  <p><strong>-- OR --</strong></p>
-  <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+  <div class="text-center">
+    <br>
+    <br>
+    <form class="form-signin">
+      <img class="mb-4" src="/static/foodi_logo.png" alt="Foodi Logo" width="200" height="100">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+      <br>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+      <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <br>
+      <p> -- OR -- </p>
+      <a class="loginBtn loginBtn--facebook" href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+    </form>
+
+
+</div>
 
 {% endblock %}
