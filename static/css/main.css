@@ -1,11 +1,8 @@
 body {
   font-family: 'Helvetica';
 }
-h1 {
-    color: #FCA205;
-}
 #search {
-  padding-left: 50px;
+  padding-left: 20%;
 }
 .text-center {
   padding-left: 40%;
