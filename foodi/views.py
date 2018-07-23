@@ -25,10 +25,9 @@ def search(request):
         response = requests.post(url, headers=headers, data=payload)
         search_result = response.json()
         food = FoodService(search_result['foods'][0])
-
-        # import code; code.interact(local=dict(globals(), **locals()))
-    template = loader.get_template('search.html')
-    context = {
-        'food': food
-    }
+        template = loader.get_template('search.html')
+        context = {
+            'food': food
+        }
+    # import code; code.interact(local=dict(globals(), **locals()))
     return HttpResponse(template.render(context))
