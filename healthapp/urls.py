@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.contrib.auth import views as auth_views
+import foodi.views as foodi_views
 # from django.conf.urls import url, include
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     path('oauth/', include('social_django.urls', namespace='social')),  # <--
     path('login/', auth_views.login, name='login'),
     path('logout/', auth_views.logout, name='logout'),
+    path('signup/', foodi_views.signup, name='signup'),
 ]
