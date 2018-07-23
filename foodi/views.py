@@ -7,6 +7,8 @@ from django.template import loader
 from foodi.food import FoodService
 
 def home(request):
+    # import code; code.interact(local=dict(globals(), **locals()))
+
     return render(request, 'home.html')
 
 def dashboard(request):
