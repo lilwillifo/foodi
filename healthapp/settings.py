@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'dj_database_url',
     'jquery',
     'django.contrib.admin',
+    'aloe_django',
 ]
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
