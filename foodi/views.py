@@ -5,6 +5,7 @@ import requests
 from decouple import config
 from django.template import loader
 from foodi.models import Food
+from foodi.food_service import FoodService
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
@@ -43,7 +44,20 @@ def search(request):
 
         response = requests.post(url, headers=headers, data=payload)
         search_result = response.json()
-        food = FoodService(search_result['foods'][0])
+        raw_food = FoodService(search_result['foods'][0])
+        food = Food.objects.get_or_create(name = raw_food.name,
+                                           img = raw_food.img,
+                                           serving_qty = raw_food.serving_qty,
+                                           serving_unit = raw_food.serving_unit,
+                                           calories = raw_food.calories,
+                                           total_fat = raw_food.total_fat,
+                                           sat_fat = raw_food.sat_fat,
+                                           cholesterol = raw_food.cholesterol,
+                                           sodium = raw_food.sodium,
+                                           carbs = raw_food.carbs,
+                                           fiber = raw_food.fiber,
+                                           sugar = raw_food.sugar,
+                                           protein = raw_food.protein)
         template = loader.get_template('search.html')
         context = {
             'food': food
