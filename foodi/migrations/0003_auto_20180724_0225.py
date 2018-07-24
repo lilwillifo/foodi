@@ -88,9 +88,4 @@ class Migration(migrations.Migration):
             field=models.IntegerField(default=0),
             preserve_default=False,
         ),
-        migrations.AddField(
-            model_name='food',
-            name='users',
-            field=models.ManyToManyField(to='foodi.User'),
-        ),
     ]

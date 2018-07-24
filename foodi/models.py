@@ -49,7 +49,7 @@ class Food(models.Model):
     dailyValueFiber = 25
     dailyValueCalcium = 1300
 
-    users = models.ManyToManyField(User)
+    users = models.ManyToManyField(User, through='Diary')
 
     def __str__(self):
         return self.name
@@ -74,3 +74,8 @@ class Food(models.Model):
 
         class Meta:
             ordering = ('id',)
+
+class Diary(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)
+    date_eaten = models.DateField()
