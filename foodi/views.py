@@ -4,7 +4,7 @@ from django.http import HttpResponse
 import requests
 from decouple import config
 from django.template import loader
-from foodi.food import FoodService
+from foodi.models import Food
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
