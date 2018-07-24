@@ -2,7 +2,7 @@ from django.db import models
 
 class User(models.Model):
     name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
+    email = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -14,7 +14,7 @@ class User(models.Model):
 
 class Food(models.Model):
         # import code; code.interact(local=dict(globals(), **locals()))
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     img = models.CharField(max_length=1000)
     serving_qty = models.IntegerField()
     serving_unit = models.CharField(max_length=500)

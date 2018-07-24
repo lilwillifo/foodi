@@ -45,20 +45,25 @@ def search(request):
         response = requests.post(url, headers=headers, data=payload)
         search_result = response.json()
         raw_food = FoodService(search_result['foods'][0])
-        food = Food.objects.get_or_create(name = raw_food.name,
-                                           img = raw_food.img,
-                                           serving_qty = raw_food.serving_qty,
-                                           serving_unit = raw_food.serving_unit,
-                                           calories = raw_food.calories,
-                                           total_fat = raw_food.total_fat,
-                                           sat_fat = raw_food.sat_fat,
-                                           cholesterol = raw_food.cholesterol,
-                                           sodium = raw_food.sodium,
-                                           carbs = raw_food.carbs,
-                                           fiber = raw_food.fiber,
-                                           sugar = raw_food.sugar,
-                                           protein = raw_food.protein)
-        template = loader.get_template('search.html')
+        try:
+            food = Food.objects.get(name = raw_food.name)
+        except Food.DoesNotExist:
+            food  = Food(name = raw_food.name,
+                           img = raw_food.img,
+                           serving_qty = raw_food.serving_qty,
+                           serving_unit = raw_food.serving_unit,
+                           calories = raw_food.calories,
+                           total_fat = raw_food.total_fat,
+                           sat_fat = raw_food.sat_fat,
+                           cholesterol = raw_food.cholesterol,
+                           sodium = raw_food.sodium,
+                           carbs = raw_food.carbs,
+                           fiber = raw_food.fiber,
+                           sugar = raw_food.sugar,
+                           protein = raw_food.protein)
+            food.save()
+        # end try
+
         context = {
             'food': food
         }
