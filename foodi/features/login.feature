@@ -1,4 +1,4 @@
-Feature: Friendships
+Feature: Login
 
   Scenario: A user can log into the app
 
