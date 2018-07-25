@@ -4,11 +4,11 @@ from selenium import webdriver
 browser = Browser('chrome')
 browser.visit('http://localhost:8000')
 browser.fill('query', 'apple')
-browser.find_by_name('query').click()
+browser.find_by_name('submit').click()
 
 if browser.is_text_present('Apple'):
-    print("Yas!")
+    print("It found the food!")
 else:
-    print("Naw")
+    print("Uh oh, no food found")
 
 browser.quit()
