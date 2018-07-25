@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 {% load staticfiles %}
+
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,11 +30,11 @@
             </li>
               {% if user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}?next=/">Logout</a>
+                  <a class="nav-link" href="{% url 'logout' %}?next={{request.path}}">Logout</a>
                 </li>
               {% else %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                  <a class="nav-link" href="{% url 'login' %}?next={{request.path}}">Login</a>
                 </li>
               {% endif %}
               <li class="nav-item">
@@ -42,7 +43,7 @@
           </ul>
           <form class="form-inline mt-2 mt-md-0" action="/search/" method="get" >
             <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" name="submit" type="submit">Search</button>
           </form>
         </div>
       </nav>

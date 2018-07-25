@@ -1,7 +1,7 @@
 class FoodService():
     def __init__(self, food_data):
         # import code; code.interact(local=dict(globals(), **locals()))
-        self.name = food_data['food_name'].capitalize
+        self.name = food_data['food_name'].capitalize()
         self.img = food_data['photo']
         self.serving_qty = food_data['serving_qty']
         self.serving_unit = food_data['serving_unit']
@@ -22,21 +22,21 @@ class FoodService():
         self.dailyValueCarb = 300
         self.dailyValueFiber = 25
         self.dailyValueCalcium = 1300
-
-    def fat_percent(self):
-        return round(self.total_fat / self.dailyValueTotalFat  * 100, 2)
-
-    def sat_fat_percent(self):
-        return round(self.sat_fat / self.dailyValueSatFat  * 100, 2)
-
-    def cholesterol_percent(self):
-        return round(self.cholesterol / self.dailyValueCholesterol  * 100, 2)
-
-    def sodium_percent(self):
-        return round(self.sodium / self.dailyValueSodium  * 100, 2)
-
-    def carb_percent(self):
-        return round(self.carbs / self.dailyValueCarb  * 100, 2)
-
-    def fiber_percent(self):
-        return round(self.fiber / self.dailyValueFiber  * 100, 2)
+#
+#     def fat_percent(self):
+#         return round(self.total_fat / self.dailyValueTotalFat  * 100, 2)
+#
+#     def sat_fat_percent(self):
+#         return round(self.sat_fat / self.dailyValueSatFat  * 100, 2)
+#
+#     def cholesterol_percent(self):
+#         return round(self.cholesterol / self.dailyValueCholesterol  * 100, 2)
+#
+#     def sodium_percent(self):
+#         return round(self.sodium / self.dailyValueSodium  * 100, 2)
+#
+#     def carb_percent(self):
+#         return round(self.carbs / self.dailyValueCarb  * 100, 2)
+#
+#     def fiber_percent(self):
+#         return round(self.fiber / self.dailyValueFiber  * 100, 2)
