@@ -5,7 +5,7 @@ from django.http import HttpResponse
 import requests
 from decouple import config
 from django.template import loader
-from foodi.models import Food, Diary
+from foodi.models import Food, Diary, Profile
 from foodi.food_service import FoodService
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -31,7 +31,7 @@ def diary(request):
             date = form.cleaned_data['date']
             food = Food.objects.get(name=form.cleaned_data['food'])
             # import code; code.interact(local=dict(globals(), **locals()))
-            Diary.objects.create(food=food, user=auth.get_user(request), servings=servings, date_eaten=date)
+            Diary.objects.create(food=food, user=auth.get_user(request).profile, servings=servings, date_eaten=date)
 
             # redirect to a new URL:
             return redirect('/dashboard/')
