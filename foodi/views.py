@@ -26,8 +26,10 @@ def diary(request):
         form = DiaryForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
+            servings = form.cleaned_data['servings']
+            import code; code.interact(local=dict(globals(), **locals()))
+            date = form.cleaned_data['dateField']
+
             # redirect to a new URL:
             return redirect('/dashboard/')
 

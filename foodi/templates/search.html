@@ -12,23 +12,15 @@
     <div class="form-group">
       {% csrf_token %}
       {{ form }}
-      <!-- <label for="sel1">Servings:</label> -->
-      <!-- <select class="form-control" id="sel1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select> -->
-      <div class='col-sm-6'>
+      <!-- <div class='col-sm-6'>
           <input type='text' class="form-control" id='datepicker' />
-      </div>
+      </div> -->
+    </div>
       <script type="text/javascript">
           $(function () {
               $('#datepicker').datepicker('show');
           });
       </script>
-    </div>
       <input class="btn btn-lg btn-primary" type="submit" value="Add">
   </form>
 
