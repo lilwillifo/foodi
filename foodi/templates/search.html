@@ -10,14 +10,16 @@
   <h2>Add to your diary.</h2>
   <form action="/diary/" method="post">
     <div class="form-group">
-      <label for="sel1">Servings:</label>
-      <select class="form-control" id="sel1">
+      {% csrf_token %}
+      {{ form }}
+      <!-- <label for="sel1">Servings:</label> -->
+      <!-- <select class="form-control" id="sel1">
         <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
         <option>5</option>
-      </select>
+      </select> -->
       <div class='col-sm-6'>
           <input type='text' class="form-control" id='datepicker' />
       </div>
