@@ -19,14 +19,14 @@ class Food(models.Model):
     serving_qty = models.IntegerField()
     serving_unit = models.CharField(max_length=500)
     calories = models.IntegerField()
-    total_fat = models.IntegerField()
-    sat_fat = models.IntegerField()
-    cholesterol = models.IntegerField()
-    sodium = models.IntegerField()
-    carbs = models.IntegerField()
-    fiber = models.IntegerField()
-    sugar = models.IntegerField()
-    protein = models.IntegerField()
+    total_fat = models.FloatField()
+    sat_fat = models.FloatField()
+    cholesterol = models.FloatField()
+    sodium = models.FloatField()
+    carbs = models.FloatField()
+    fiber = models.FloatField()
+    sugar = models.FloatField()
+    protein = models.FloatField()
     calorieIntake = 2000
     dailyValueTotalFat = 65
     dailyValueSatFat = 20
