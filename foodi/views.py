@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import auth
 from django.http import HttpResponse
 import requests
 from decouple import config
 from django.template import loader
-from foodi.models import Food
+from foodi.models import Food, Diary
 from foodi.food_service import FoodService
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -24,13 +25,13 @@ def diary(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = DiaryForm(request.POST)
-        import code; code.interact(local=dict(globals(), **locals()))
         # check whether it's valid:
         if form.is_valid():
             servings = form.cleaned_data['servings']
             date = form.cleaned_data['date']
-            food = form.cleaned_data['food']
-            user = request.user
+            food = Food.objects.get(name=form.cleaned_data['food'])
+            # import code; code.interact(local=dict(globals(), **locals()))
+            Diary.objects.create(food=food, user=auth.get_user(request), servings=servings, date_eaten=date)
 
             # redirect to a new URL:
             return redirect('/dashboard/')
