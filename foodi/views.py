@@ -24,11 +24,13 @@ def diary(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = DiaryForm(request.POST)
+        import code; code.interact(local=dict(globals(), **locals()))
         # check whether it's valid:
         if form.is_valid():
             servings = form.cleaned_data['servings']
             date = form.cleaned_data['date']
-            import code; code.interact(local=dict(globals(), **locals()))
+            food = form.cleaned_data['food']
+            user = request.user
 
             # redirect to a new URL:
             return redirect('/dashboard/')
@@ -84,7 +86,7 @@ def search(request):
 
     context = {
         'food': food,
-        'form': DiaryForm(),
+        'form': DiaryForm(initial={'food': food}),
     }
     # import code; code.interact(local=dict(globals(), **locals()))
     return render(request, 'search.html', context)
