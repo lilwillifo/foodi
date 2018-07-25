@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'jquery',
     'django.contrib.admin',
     'aloe_django',
+    'splinter'
 ]
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
