@@ -49,7 +49,7 @@ def search(request):
             food = Food.objects.get(name = raw_food.name)
         except Food.DoesNotExist:
             food  = Food(name = raw_food.name,
-                           img = raw_food.img,
+                           img = raw_food.img['thumb'],
                            serving_qty = raw_food.serving_qty,
                            serving_unit = raw_food.serving_unit,
                            calories = raw_food.calories,
