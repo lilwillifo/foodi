@@ -8,32 +8,28 @@
 {% include '_label.html' %}
 
   <h2>Add to your diary.</h2>
-  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Servings
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-    </ul>
-  </div>
-
-  <div class="container">
-      <div class="row">
-          <div class='col-sm-6'>
-              <input type='text' class="form-control" id='datetimepicker4' />
-          </div>
-          <script type="text/javascript">
-              $(function () {
-                  $('#datetimepicker4').datepicker('show');
-              });
-          </script>
+  <form action="/diary/" method="post">
+    <div class="form-group">
+      <label for="sel1">Servings:</label>
+      <select class="form-control" id="sel1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+      <div class='col-sm-6'>
+          <input type='text' class="form-control" id='datepicker' />
       </div>
-  </div>
-  <p><a class="btn btn-lg btn-primary" href="#" role="button">Add</a></p>
+      <script type="text/javascript">
+          $(function () {
+              $('#datepicker').datepicker('show');
+          });
+      </script>
+    </div>
+      <input class="btn btn-lg btn-primary" type="submit" value="Add">
+  </form>
+
 
 
   {% endblock %}
