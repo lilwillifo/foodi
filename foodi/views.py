@@ -27,8 +27,8 @@ def diary(request):
         # check whether it's valid:
         if form.is_valid():
             servings = form.cleaned_data['servings']
+            date = form.cleaned_data['date']
             import code; code.interact(local=dict(globals(), **locals()))
-            date = form.cleaned_data['dateField']
 
             # redirect to a new URL:
             return redirect('/dashboard/')
