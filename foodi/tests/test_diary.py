@@ -1,5 +1,6 @@
 from django.test import TestCase
 from foodi.models import Diary, Food, User, Profile
+import datetime
 
 class DiaryTestCase(TestCase):
     def setUp(self):
@@ -26,3 +27,11 @@ class DiaryTestCase(TestCase):
         self.assertEqual(diary.user, user)
         self.assertEqual(diary.servings, 2)
         self.assertEqual(diary.date_eaten, '2018-08-27')
+
+    def test_diary_is_sorted_by_date(self):
+        user = User.objects.get(username="Katelyn").profile
+        food = Food.objects.get(name="candy")
+        diary = Diary.objects.create(food=food, user=user, servings=5, date_eaten='2018-08-29')
+        diary = Diary.objects.create(food=food, user=user, servings=5, date_eaten='2018-07-09')
+        diary = Diary.objects.create(food=food, user=user, servings=5, date_eaten='2016-01-01')
+        self.assertEqual(Diary.objects.all()[0].date_eaten, datetime.date(2016, 1, 1))
