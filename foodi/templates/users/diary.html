@@ -6,10 +6,9 @@
 <br>
 <br>
 <div class="container marketing">
-
       {% for x in user.profile.diaries.all %}
-        <p>Food: <a href="{% url 'search' %}?query={{x.name}}">{{ x.food.name }}</a></p>
         <p>Date: {{ x.date_eaten }}</p>
+        <p>Food: <a href="{% url 'search' %}?query={{x.food.name}}">{{ x.food.name }}</a></p>
         <p>Servings: {{ x.servings }}</p>
       {% endfor %}
 </div>
