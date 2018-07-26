@@ -38,7 +38,7 @@ def diary(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        return redirect('/dashboard/')
+        return render(request, 'users/diary.html')
 
 def signup(request):
     if request.method == 'POST':

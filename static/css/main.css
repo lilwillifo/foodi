@@ -1,5 +1,6 @@
 body {
   font-family: 'Helvetica';
+  background-color: #E7F3FF;
 }
 .text-center {
   padding-left: 40%;
@@ -8,6 +9,10 @@ body {
 .logo {
   height: 100px;
   width: 200px;
+}
+
+nav {
+  background-color: #AEE0C5;
 }
 
 

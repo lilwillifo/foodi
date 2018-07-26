@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container marketing">
+
+      {% for x in user.profile.diaries.all %}
+        <p>Food: <a href="{% url 'search' %}?query={{x.name}}">{{ x.food.name }}</a></p>
+        <p>Date: {{ x.date_eaten }}</p>
+        <p>Servings: {{ x.servings }}</p>
+      {% endfor %}
+</div>
+<br>
+{% endblock %}
