@@ -6,6 +6,6 @@ Feature: Login
 
     And I go to the signup page
 
-    And enter a username and password
+    And I enter a username and password
 
     Then I have created an account

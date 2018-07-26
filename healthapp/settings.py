@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'jquery',
     'django.contrib.admin',
     'splinter',
-    'behave'
+    'behave_django'
 ]
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
