@@ -46,11 +46,12 @@ INSTALLED_APPS = [
     'dj_database_url',
     'jquery',
     'django.contrib.admin',
-    'aloe_django',
-    'splinter'
+    'splinter',
+    'behave'
 ]
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',

@@ -2,9 +2,7 @@ from aloe import before, step, world
 from aloe.tools import guess_types
 from aloe_django.steps.models import get_model
 from nose.tools import assert_true
-
 from django.contrib.auth.models import User
-
 from rest_framework.test import APIClient
 
 
