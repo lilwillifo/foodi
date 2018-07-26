@@ -4,23 +4,26 @@
 <hr>
 <hr>
 <h1 class="text-center"><img src="{{ food.img }}"><br>{{ food.name }}</h1>
-
-{% include '_label.html' %}
-
-  <h2>Add to your diary.</h2>
-  <form action="/diary/" method="post">
-    <div class="form-group">
-      {% csrf_token %}
-      {{ form }}
-    </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#datepicker').datepicker('show');
-          });
-      </script>
-      <input class="btn btn-lg btn-primary" type="submit" value="Add">
-  </form>
-
+<div class="row">
+  <div class="col-lg-6">
+    {% include '_label.html' %}
+  </div>
+  <div class="col-lg-6">
+    <h2>Add to your diary.</h2>
+    <form action="/diary/" method="post">
+      <div class="form-group">
+        {% csrf_token %}
+        {{ form }}
+      </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datepicker').datepicker('show');
+            });
+        </script>
+        <input class="btn btn-lg btn-primary" type="submit" value="Add">
+    </form>
+  </div>
+</div>
 
 
   {% endblock %}

@@ -1,9 +1,6 @@
 body {
   font-family: 'Helvetica';
 }
-#search {
-  padding-left: 20%;
-}
 .text-center {
   padding-left: 40%;
   padding-right: 40%;
@@ -12,7 +9,6 @@ body {
   height: 100px;
   width: 200px;
 }
-
 
 
 /* Shared */
