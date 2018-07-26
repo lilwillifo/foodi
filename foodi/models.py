@@ -66,7 +66,9 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 class Diary(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    food = models.ForeignKey(Food, on_delete=models.CASCADE)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='diaries')
+    food = models.ForeignKey(Food, on_delete=models.CASCADE, related_name='diaries')
     date_eaten = models.DateField()
     servings = models.FloatField()
+    class Meta:
+        ordering = ['date_eaten']

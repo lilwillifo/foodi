@@ -1,8 +1,6 @@
 body {
   font-family: 'Helvetica';
-}
-#search {
-  padding-left: 20%;
+  background-color: #E7F3FF;
 }
 .text-center {
   padding-left: 40%;
@@ -13,6 +11,9 @@ body {
   width: 200px;
 }
 
+nav {
+  background-color: #AEE0C5;
+}
 
 
 /* Shared */

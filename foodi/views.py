@@ -34,11 +34,11 @@ def diary(request):
             Diary.objects.create(food=food, user=auth.get_user(request).profile, servings=servings, date_eaten=date)
 
             # redirect to a new URL:
-            return redirect('/dashboard/')
+            return redirect('/diary/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        return redirect('/dashboard/')
+        return render(request, 'users/diary.html')
 
 def signup(request):
     if request.method == 'POST':
