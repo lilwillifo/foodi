@@ -11,10 +11,10 @@ Background: There are foods and users in the system
         |    carrot             |
 
     And there are many users, each with different foods:
-        |    name           |   foods                      |
-        |    Billie Jean    |   apple, banana              |
-        |    Rocky Raccoon  |   apple, carrot              |
-        |    Major Tom      |   banana, carrot             |
+        |    username           |   foods                      |
+        |    BillieJean    |   apple, banana              |
+        |    RockyRaccoon  |   apple, carrot              |
+        |    MajorTom      |   banana, carrot             |
 
 Scenario: See my foods
     Given I am a logged in user

@@ -1,6 +1,7 @@
 from behave import *
 from foodi.factories import FoodFactory
 from foodi.accounts.factories import UserFactory
+from foodi.models import Food
 
 @given(u'there are a number of foods')
 def step_impl(context):
@@ -11,7 +12,7 @@ def step_impl(context):
     for row in context.table:
         food_names = row['foods'].split(', ')
         foods = Food.objects.filter(name__in=food_names)
-        UserFactory(email=row['email'], foods=foods)
+        UserFactory(username=row['username'], foods=foods)
 
 @given(u'I am a logged in user')
 def step_impl(context):
