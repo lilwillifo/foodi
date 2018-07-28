@@ -1,13 +1,24 @@
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from foodi.models import Profile, Food, Diary
+from foodi.food_service import FoodService
 from django.contrib.auth.models import User
+from decouple import config
 from faker import Faker
+import requests
+import random
+from random import randint
+from datetime import datetime
+from IPython import embed
 
 class Command(BaseCommand):
     help='Seeding the database'
+    fake = Faker()
 
     def _create_foods(self):
-        for _ in range(100):
+        foods = ['apple', 'banana', 'carrot', 'donut', 'eggs', 'fruitcake',
+                 'hot dog', 'ice cream', 'jerky', 'kit kat', 'lemonade', 'mac and cheese', 'nuts',
+                 'rice', 'snickers', 'tacos', 'veal', 'steak']
+        for food in foods:
             url = 'https://trackapi.nutritionix.com/v2/natural/nutrients'
             headers = {'x-app-id': config('NIX_APP_ID'),
                        'x-app-key': config('NIX_APP_KEY'),
@@ -36,5 +47,18 @@ class Command(BaseCommand):
                                    protein = raw_food.protein)
                     food.save()
 
+    def _create_diaries(self):
+        users = User.objects.all()
+        for user in users:
+            for _ in range(1,100):
+                food = Food.objects.order_by('?').first()
+                year = random.randint(2017, 2018)
+                month = random.randint(1, 12)
+                day = random.randint(1, 28)
+                date = f"{year}-{month}-{day}"
+                Diary.objects.create(food=food, user=user.profile, servings=randint(1,5), date_eaten=date )
+
+
     def handle(self, *args, **options):
         self._create_foods()
+        self._create_diaries()
