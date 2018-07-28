@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% load static %}
-{% load staticfiles %}
 
 <html lang="en"><head>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -44,7 +43,15 @@
                   <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
                 </li>
               {% endif %}
+              {% if messages %}
+                <div class="nav-link messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </div>
+              {% endif %}
           </ul>
+
           <form class="form-inline mt-2 mt-md-0" action="/search/" method="get" >
             <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search for Food" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" name="submit" type="submit">Search</button>

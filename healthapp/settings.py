@@ -17,7 +17,6 @@ from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -46,11 +45,12 @@ INSTALLED_APPS = [
     'dj_database_url',
     'jquery',
     'django.contrib.admin',
-    'aloe_django',
-    'splinter'
+    'splinter',
+    'behave_django'
 ]
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',

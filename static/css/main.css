@@ -11,6 +11,10 @@ body {
   width: 200px;
 }
 
+.error {
+  color: red;
+}
+
 nav {
   background-color: #AEE0C5;
 }

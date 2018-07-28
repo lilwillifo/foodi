@@ -8,21 +8,27 @@
   <div class="col-lg-6">
     {% include '_label.html' %}
   </div>
-  <div class="col-lg-6">
-    <h2>Add to your diary.</h2>
-    <form action="/diary/" method="post">
-      <div class="form-group">
-        {% csrf_token %}
-        {{ form }}
-      </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datepicker').datepicker('show');
-            });
-        </script>
-        <input class="btn btn-lg btn-primary" type="submit" value="Add">
-    </form>
-  </div>
+  {% if user.is_authenticated %}
+    <div class="col-lg-6">
+      <h2>Add to your diary.</h2>
+      <form action="/diary/" method="post">
+        <div class="form-group">
+          {% csrf_token %}
+          {{ form }}
+        </div>
+          <script type="text/javascript">
+              $(function () {
+                  $('#datepicker').datepicker('show');
+              });
+          </script>
+          <input class="btn btn-lg btn-primary" type="submit" value="Add">
+      </form>
+    </div>
+    {% else %}
+    <div class="col-lg-6">
+      <h3><a href="{% url 'signup' %}">Sign Up</a> or <a href="{% url 'login' %}?next={{request.path}}">Login</a> to add to your diary.</h3>
+    </div>
+    {% endif %}
 </div>
 
 
