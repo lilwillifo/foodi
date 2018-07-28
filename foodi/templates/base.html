@@ -44,7 +44,15 @@
                   <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
                 </li>
               {% endif %}
+              {% if messages %}
+                <div class="nav-link messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </div>
+              {% endif %}
           </ul>
+
           <form class="form-inline mt-2 mt-md-0" action="/search/" method="get" >
             <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search for Food" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" name="submit" type="submit">Search</button>

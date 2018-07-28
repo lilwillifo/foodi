@@ -7,6 +7,7 @@ from foodi.food_service import FoodService
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import DiaryForm
+from django.contrib import messages
 
 def home(request):
     # import code; code.interact(local=dict(globals(), **locals()))
@@ -61,7 +62,8 @@ def search(request):
     response = requests.post(url, headers=headers, data=payload)
     search_result = response.json()
     if 'foods' not in search_result:
-        return render(request, 'home.html')
+        context = messages.error(request, 'No foods found.')
+        return render(request, 'home.html', context)
     else:
         raw_food = FoodService(search_result['foods'][0])
         try:
