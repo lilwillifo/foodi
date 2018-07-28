@@ -9,7 +9,6 @@ from foodi.models import Food, Diary, Profile
 from foodi.food_service import FoodService
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
 from .forms import DiaryForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 

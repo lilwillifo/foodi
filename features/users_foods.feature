@@ -11,7 +11,7 @@ Background: There are foods and users in the system
         |    carrot             |
 
     And there are many users, each with different foods:
-        |    username           |   foods                      |
+        |    username      |   foods                      |
         |    BillieJean    |   apple, banana              |
         |    RockyRaccoon  |   apple, carrot              |
         |    MajorTom      |   banana, carrot             |
