@@ -53,22 +53,22 @@ def signup(request):
 def search(request):
     search_result = {}
     food = request.GET['query']
-    url = 'https://trackapi.nutritionix.com/v2/natural/nutrients'
-    headers = {'x-app-id': config('NIX_APP_ID'),
-               'x-app-key': config('NIX_APP_KEY'),
-               'x-remote-user-id': '0'}
-    payload = {'query': food}
+    try:
+        food = Food.objects.get(name = food.capitalize())
+    except Food.DoesNotExist:
+        url = 'https://trackapi.nutritionix.com/v2/natural/nutrients'
+        headers = {'x-app-id': config('NIX_APP_ID'),
+                   'x-app-key': config('NIX_APP_KEY'),
+                   'x-remote-user-id': '0'}
+        payload = {'query': food}
 
-    response = requests.post(url, headers=headers, data=payload)
-    search_result = response.json()
-    if 'foods' not in search_result:
-        context = messages.error(request, 'No foods found.')
-        return render(request, 'home.html', context)
-    else:
-        raw_food = FoodService(search_result['foods'][0])
-        try:
-            food = Food.objects.get(name = raw_food.name)
-        except Food.DoesNotExist:
+        response = requests.post(url, headers=headers, data=payload)
+        search_result = response.json()
+        if 'foods' not in search_result:
+            context = messages.error(request, 'No foods found.')
+            return render(request, 'home.html', context)
+        else:
+            raw_food = FoodService(search_result['foods'][0])
             food  = Food(name = raw_food.name,
                            img = raw_food.img['thumb'],
                            serving_qty = raw_food.serving_qty,
@@ -83,11 +83,11 @@ def search(request):
                            sugar = raw_food.sugar,
                            protein = raw_food.protein)
             food.save()
-            # end try
+        # end try
 
-        context = {
-            'food': food,
-            'form': DiaryForm(initial={'food': food}),
-        }
-        # import code; code.interact(local=dict(globals(), **locals()))
-        return render(request, 'search.html', context)
+    context = {
+        'food': food,
+        'form': DiaryForm(initial={'food': food}),
+    }
+    # import code; code.interact(local=dict(globals(), **locals()))
+    return render(request, 'search.html', context)
