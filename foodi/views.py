@@ -91,3 +91,28 @@ def search(request):
     }
     # import code; code.interact(local=dict(globals(), **locals()))
     return render(request, 'search.html', context)
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.contrib.auth.models import User
+
+class ChartData(APIView):
+# can change these two variables down the road to enhance security, but for now just leave them blank
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        foods = dict()
+        for user in User.objects.all():
+            if user.profile.foods.count() > 0:
+                foods[user.username] = user.profile.foods.count()
+
+        foods = sorted(foods.items(), key=lambda x: x[1])
+        foods = dict(foods)
+
+        data = {
+            "food_labels": foods.keys(),
+            "food_data": foods.values(),
+        }
+
+        return Response(data)
