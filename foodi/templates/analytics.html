@@ -2,22 +2,21 @@
 
 {% block content %}
     <div class="row">
-        <div id="foods" style="width:1400px;height:800px;"></div>
+        <div id="calories" style="width:1400px;height:800px;"></div>
     </div>
 {% endblock %}
 
 {% block jquery %}
 var endpoint = '/api/chart/data'
-var foodData = foodLabels = []
+var calorieData = calorieLabels = []
 
 $.ajax({
     method: "GET",
     url: endpoint,
     success: function(data){
-        foodLabels = data.food_labels
-        debugger;
-        foodData = data.food_data
-        foodChart()
+        calorieLabels = data.calorie_labels
+        calorieData = data.calorie_data
+        calorieChart()
         transcriptChart()
     // console.log(data)
     },
@@ -27,10 +26,10 @@ $.ajax({
     },
 })
 
-function foodChart(){
+function calorieChart(){
     var data = [{
-        x: foodData,
-        y: foodLabels,
+        x: calorieData,
+        y: calorieLabels,
         type: 'bar',
         orientation: 'h',
         marker: {
@@ -47,7 +46,7 @@ function foodChart(){
         margin: {l:200},
     };
 
-    Plotly.newPlot('foods', data, layout);
+    Plotly.newPlot('calories', data, layout);
 }
 
 {% endblock %}

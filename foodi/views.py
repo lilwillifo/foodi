@@ -8,6 +8,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import DiaryForm
 from django.contrib import messages
+from IPython import embed
+from django.core import serializers
 
 def home(request):
     # import code; code.interact(local=dict(globals(), **locals()))
@@ -105,17 +107,19 @@ class ChartData(APIView):
     permission_classes = []
 
     def get(self, request, format=None):
-        foods = dict()
-        for user in User.objects.all():
-            if user.profile.foods.count() > 0:
-                foods[user.username] = user.profile.foods.count()
+        calories = dict()
+        user = auth.get_user(request)
+        if user.profile.foods.count() > 0:
+            for food in user.profile.foods.all():
+                calories[food.name] = food.calories
 
-        foods = sorted(foods.items(), key=lambda x: x[1])
-        foods = dict(foods)
+
+        calories = sorted(calories.items(), key=lambda x: x[1])
+        calories = dict(calories)
 
         data = {
-            "food_labels": foods.keys(),
-            "food_data": foods.values(),
+            "calorie_labels": calories.keys(),
+            "calorie_data": calories.values(),
         }
 
         return Response(data)
