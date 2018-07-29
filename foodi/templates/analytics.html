@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div id="foods" style="width:1400px;height:800px;"></div>
+    </div>
+{% endblock %}
+
+{% block jquery %}
+var endpoint = '/api/chart/data'
+var foodData = foodLabels = []
+
+$.ajax({
+    method: "GET",
+    url: endpoint,
+    success: function(data){
+        foodLabels = data.food_labels
+        debugger;
+        foodData = data.food_data
+        foodChart()
+        transcriptChart()
+    // console.log(data)
+    },
+    error: function(error_data){
+        console.log("error")
+        console.log(error_data)
+    },
+})
+
+function foodChart(){
+    var data = [{
+        x: foodData,
+        y: foodLabels,
+        type: 'bar',
+        orientation: 'h',
+        marker: {
+            color: '#23b7e5',
+        },
+    }];
+    var layout = {
+        title: 'Number of Foods per User',
+        titlefont: {
+            family: 'Droid Sans Mono',
+            size: 36,
+            color: '#000000'
+        },
+        margin: {l:200},
+    };
+
+    Plotly.newPlot('foods', data, layout);
+}
+
+{% endblock %}

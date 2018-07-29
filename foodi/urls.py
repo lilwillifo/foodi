@@ -6,5 +6,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('search/', views.search, name='search'),
     path('diary/', views.diary, name='diary'),
+    path('analytics/', views.analytics, name='analytics'),
     path('api/chart/data/', views.ChartData.as_view(), name='api-chart-data')
 ]

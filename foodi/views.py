@@ -13,6 +13,9 @@ def home(request):
     # import code; code.interact(local=dict(globals(), **locals()))
     return render(request, 'home.html')
 
+def analytics(request):
+    return render(request, 'analytics.html')
+
 def dashboard(request):
     return render(request, 'users/dashboard.html')
 
