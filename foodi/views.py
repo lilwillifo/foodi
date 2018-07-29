@@ -10,6 +10,7 @@ from .forms import DiaryForm
 from django.contrib import messages
 from IPython import embed
 from django.core import serializers
+from django.db.models import Sum
 
 def home(request):
     # import code; code.interact(local=dict(globals(), **locals()))
@@ -110,6 +111,9 @@ class ChartData(APIView):
         calories = dict()
         user = auth.get_user(request)
         if user.profile.foods.count() > 0:
+            total_fat = user.profile.foods.aggregate(Sum('calories'))['calories__sum']
+            total_carbs = user.profile.foods.aggregate(Sum('carbs'))['carbs__sum']
+            total_protein = user.profile.foods.aggregate(Sum('protein'))['protein__sum']
             for food in user.profile.foods.all():
                 calories[food.name] = food.calories
 
