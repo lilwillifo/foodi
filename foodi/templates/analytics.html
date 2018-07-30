@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <div class="row">
-        <div id="calories" style="width:1200px;height:600px;"></div>
-        <div id="nutrients" style="width:1200px;height:600px;"></div>
-    </div>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-lg-6">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="text-center" id="top_5">Top Foods:</h1>
+    <div id="calories" style="width:1200px;height:600px;"></div>
+    <div id="nutrients" style="width:1200px;height:600px;"></div>
+  </div>
+</div>
 {% endblock %}
 
 {% block jquery %}
@@ -21,6 +31,8 @@ $.ajax({
         fat = data.fat
         carbs = data.carbs
         protein = data.protein
+        top_5_foods = data.top_5_foods
+        topFoods()
         calorieChart()
         nutrientChart()
     // console.log(data)
@@ -30,6 +42,14 @@ $.ajax({
         console.log(error_data)
     },
 })
+
+function topFoods(){
+  $( "#top_5" ).append("<h3>")
+  top_5_foods.forEach(function(food){
+    $( "#top_5" ).append(food[0]+" ")
+  })
+  $( "#top_5" ).append("</h3>" )
+}
 
 function nutrientChart(){
     var data = [
