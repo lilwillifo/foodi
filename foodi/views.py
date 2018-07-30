@@ -125,9 +125,9 @@ class ChartData(APIView):
             "calorie_labels": calories.keys(),
             "calorie_data": calories.values(),
             "average_calories": total_calories,
-            "average_fat": total_fat,
-            "average_carbs": total_carbs,
-            "average_protein": total_protein,
+            "fat": total_fat,
+            "carbs": total_carbs,
+            "protein": total_protein,
         }
 
         return Response(data)

@@ -18,6 +18,9 @@ $.ajax({
     success: function(data){
         calorieLabels = data.calorie_labels
         calorieData = data.calorie_data
+        fat = data.fat
+        carbs = data.carbs
+        protein = data.protein
         calorieChart()
         nutrientChart()
     // console.log(data)
@@ -34,16 +37,14 @@ function nutrientChart(){
       "labelssrc": "lilwillifo:1:0de3ed",
       "uid": "416e7bcc-9358-11e8-923a-8c859087b02e",
       "labels": [
-        "Oxygen",
-        "Hydrogen",
-        "Carbon_Dioxide",
-        "Nitrogen"
+        "Fat",
+        "Carbs",
+        "Protein",
       ],
       "values": [
-        4500,
-        2500,
-        1053,
-        500
+        fat,
+        carbs,
+        protein,
       ],
       "type": "pie",
       "valuessrc": "lilwillifo:1:256b74"
