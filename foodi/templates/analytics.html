@@ -3,7 +3,8 @@
 {% block content %}
 
     <div class="row">
-        <div id="calories" style="width:1400px;height:800px;"></div>
+        <div id="calories" style="width:1200px;height:600px;"></div>
+        <div id="nutrients" style="width:1200px;height:600px;"></div>
     </div>
 {% endblock %}
 
@@ -18,6 +19,7 @@ $.ajax({
         calorieLabels = data.calorie_labels
         calorieData = data.calorie_data
         calorieChart()
+        nutrientChart()
     // console.log(data)
     },
     error: function(error_data){
@@ -25,6 +27,31 @@ $.ajax({
         console.log(error_data)
     },
 })
+
+function nutrientChart(){
+    var data = [
+    {
+      "labelssrc": "lilwillifo:1:0de3ed",
+      "uid": "416e7bcc-9358-11e8-923a-8c859087b02e",
+      "labels": [
+        "Oxygen",
+        "Hydrogen",
+        "Carbon_Dioxide",
+        "Nitrogen"
+      ],
+      "values": [
+        4500,
+        2500,
+        1053,
+        500
+      ],
+      "type": "pie",
+      "valuessrc": "lilwillifo:1:256b74"
+    }
+  ]
+
+    Plotly.newPlot('nutrients', data);
+}
 
 function calorieChart(){
     var data = [{
