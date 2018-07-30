@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-lg-6">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="text-center" id="top_5">Top Foods:</h1>
+    <div id="calories" style="width:1200px;height:600px;"></div>
+    <div id="nutrients" style="width:1200px;height:600px;"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block jquery %}
+var endpoint = '/api/chart/data'
+var calorieData = calorieLabels = []
+
+$.ajax({
+    method: "GET",
+    url: endpoint,
+    success: function(data){
+        calorieLabels = data.calorie_labels
+        calorieData = data.calorie_data
+        fat = data.fat
+        carbs = data.carbs
+        protein = data.protein
+        top_5_foods = data.top_5_foods
+        topFoods()
+        calorieChart()
+        nutrientChart()
+    // console.log(data)
+    },
+    error: function(error_data){
+        console.log("error")
+        console.log(error_data)
+    },
+})
+
+function topFoods(){
+  $( "#top_5" ).append("<h3>")
+  top_5_foods.forEach(function(food){
+    $( "#top_5" ).append(food[0]+" ")
+  })
+  $( "#top_5" ).append("</h3>" )
+}
+
+function nutrientChart(){
+    var data = [
+    {
+      "labelssrc": "lilwillifo:1:0de3ed",
+      "uid": "416e7bcc-9358-11e8-923a-8c859087b02e",
+      "labels": [
+        "Fat",
+        "Carbs",
+        "Protein",
+      ],
+      "values": [
+        fat,
+        carbs,
+        protein,
+      ],
+      "type": "pie",
+      "valuessrc": "lilwillifo:1:256b74"
+    }
+  ]
+
+    Plotly.newPlot('nutrients', data);
+}
+
+function calorieChart(){
+    var data = [{
+        x: calorieLabels,
+        y: calorieData,
+        type: 'bar',
+        orientation: 'v',
+        marker: {
+            color: '#23b7e5',
+        },
+    }];
+    var layout = {
+        title: 'Number of Foods per User',
+        titlefont: {
+            family: 'Droid Sans Mono',
+            size: 36,
+            color: '#000000'
+        },
+        margin: {l:200},
+    };
+
+    Plotly.newPlot('calories', data, layout);
+}
+
+{% endblock %}

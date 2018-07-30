@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'splinter',
     'behave_django',
+    'rest_framework',
 ]
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True

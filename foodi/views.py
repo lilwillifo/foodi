@@ -8,10 +8,16 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import DiaryForm
 from django.contrib import messages
+from IPython import embed
+from django.db.models import Sum
+from collections import Counter
 
 def home(request):
     # import code; code.interact(local=dict(globals(), **locals()))
     return render(request, 'home.html')
+
+def analytics(request):
+    return render(request, 'analytics.html')
 
 def dashboard(request):
     return render(request, 'users/dashboard.html')
@@ -91,3 +97,41 @@ def search(request):
     }
     # import code; code.interact(local=dict(globals(), **locals()))
     return render(request, 'search.html', context)
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.contrib.auth.models import User
+
+class ChartData(APIView):
+# can change these two variables down the road to enhance security, but for now just leave them blank
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        calories = dict()
+        food_count = dict()
+        user = auth.get_user(request)
+        if user.profile.foods.count() > 0:
+            total_fat = user.profile.foods.aggregate(Sum('total_fat'))['total_fat__sum']
+            total_carbs = user.profile.foods.aggregate(Sum('carbs'))['carbs__sum']
+            total_protein = user.profile.foods.aggregate(Sum('protein'))['protein__sum']
+            total_calories = user.profile.foods.aggregate(Sum('calories'))['calories__sum']
+            for food in user.profile.foods.all():
+                calories[food.name] = food.calories
+                food_count[food.name] = user.profile.diaries.filter(food=food).aggregate(total_servings=Sum('servings'))['total_servings']
+            top_5 = Counter(food_count).most_common()[:5]
+
+        calories = sorted(calories.items(), key=lambda x: x[1])
+        calories = dict(calories)
+
+        data = {
+            "calorie_labels": calories.keys(),
+            "calorie_data": calories.values(),
+            "average_calories": total_calories,
+            "fat": total_fat,
+            "carbs": total_carbs,
+            "protein": total_protein,
+            "top_5_foods": top_5
+        }
+
+        return Response(data)
