@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'foodi',
-    'social_django',
     'dj_database_url',
     'jquery',
     'django.contrib.admin',
