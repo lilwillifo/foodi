@@ -38,7 +38,7 @@
                   <a class="dropdown-item" href="{% url 'diary' %}">Diary</a>
                   <a class="dropdown-item" href="{% url 'analytics' %}">Analytics</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{% url 'logout' %}?next={{request.path}}">Logout</a>
+                  <a class="dropdown-item" href="{% url 'logout' %}?next=/">Logout</a>
                 </div>
               </li>
               {% else %}
