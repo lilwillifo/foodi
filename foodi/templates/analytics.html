@@ -5,7 +5,6 @@
 <br>
 <br>
 <br>
-<div class="row">
     <br>
     <br>
     <br>
@@ -13,7 +12,7 @@
       <div class="row">
         <div class="col">
           <div class="card" >
-            <img class="card-img-top" src="https://asset1.cxnmarksandspencer.com/is/image/mands/52b9525889284ac5d20b7a268ff0d478d8c368d7?$editorial_580x580$" alt="Card image cap">
+            <img class="card-img-top" src="https://asset1.cxnmarksandspencer.com/is/image/mands/52b9525889284ac5d20b7a268ff0d478d8c368d7?$editorial_580x580$" alt="Food">
             <div class="card-body">
               <h5 class="card-title">Top Foods:</h5>
               <p class="card-text"  id="top_5"></p>
@@ -21,14 +20,16 @@
             </div>
           </div>
         </div>
-        <div class="col">
-          <div id="calories" style="width: 400px;"></div>
+        <div class="col-5">
+          <div id="calories"></div>
         </div>
-        <div class="col">
-          <div id="nutrients" style="width: 400px;"></div>
+        <div class="col-4">
+          <div id="nutrients"></div>
         </div>
     </div>
-</div>
+    <br>
+    <br>
+    <br>
 {% endblock %}
 
 {% block jquery %}
@@ -81,7 +82,7 @@ function nutrientChart(){
     }
   ]
   var layout = {
-      title: 'Foods Calories',
+      title: 'Nutrition Breakdown',
       titlefont: {
           size: 36,
           color: '#000000'
@@ -102,7 +103,7 @@ function calorieChart(){
         },
     }];
     var layout = {
-        title: 'Foods Calories',
+        title: 'Food by Calories',
         titlefont: {
             size: 36,
             color: '#000000'
