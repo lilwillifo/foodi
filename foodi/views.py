@@ -1,6 +1,6 @@
+import requests
 from django.shortcuts import render, redirect
 from django.contrib import auth
-import requests
 from decouple import config
 from foodi.models import Food, Diary, Profile
 from foodi.food_service import FoodService

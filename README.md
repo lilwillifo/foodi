@@ -46,14 +46,6 @@ Foodi allows users to track their eating habits and nutrition. Use the search ba
 
 You'll need [Django](https://www.djangoproject.com/) and [Python3](https://www.python.org/downloads/) installed
 
-```
-Give examples
-```
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
 ## Running the Server Locally
 
 To see your code in action locally, you need to fire up a development server. Use the command:
