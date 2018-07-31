@@ -52,9 +52,9 @@ class Command(BaseCommand):
         for user in users:
             for _ in range(1,100):
                 food = Food.objects.order_by('?').first()
-                year = random.randint(2017, 2018)
-                month = random.randint(1, 12)
-                day = random.randint(1, 28)
+                year = 2018
+                month = 7
+                day = random.randint(1, 31)
                 date = f"{year}-{month}-{day}"
                 Diary.objects.create(food=food, user=user.profile, servings=randint(1,5), date_eaten=date )
 

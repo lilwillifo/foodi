@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.db.models import Sum
+from collections import Counter
+
 
 class Food(models.Model):
         # import code; code.interact(local=dict(globals(), **locals()))
@@ -55,6 +58,12 @@ class Food(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     foods = models.ManyToManyField(Food, through='Diary', related_name='users')
+    def top_5_foods(self):
+        food_count = dict()
+        for food in self.foods.all():
+            food_count[food.name] = self.diaries.filter(food=food).aggregate(total_servings=Sum('servings'))['total_servings']
+        top_5 = Counter(food_count).most_common()[:5]
+        return top_5
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

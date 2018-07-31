@@ -36,6 +36,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
                   <a class="dropdown-item" href="{% url 'diary' %}">Diary</a>
+                  <a class="dropdown-item" href="{% url 'analytics' %}">Analytics</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'logout' %}?next={{request.path}}">Logout</a>
                 </div>
@@ -58,8 +59,8 @@
           </ul>
 
           <form class="form-inline mt-2 mt-md-0" action="/search/" method="get" >
-            <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search for Food" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" name="submit" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="text" name="query" placeholder="Add a Food" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" name="submit" type="submit">Add</button>
           </form>
         </div>
       </nav>
