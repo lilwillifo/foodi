@@ -81,6 +81,8 @@ tr:first-child td {
 .counter
 {
     text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 .dashboard-counter
 {

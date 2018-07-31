@@ -20,7 +20,11 @@ def analytics(request):
     return render(request, 'analytics.html')
 
 def dashboard(request):
-    return render(request, 'users/dashboard.html')
+    user = auth.get_user(request)
+    average_calories = user.profile.foods.aggregate(Sum('calories'))['calories__sum'] / 31
+    average_protein = user.profile.foods.aggregate(Sum('protein'))['protein__sum'] / 31
+    context = {'avg_cal': int(average_calories), 'avg_protein': int(average_protein) }
+    return render(request, 'users/dashboard.html', context)
 
 def diary(request):
     # if this is a POST request we need to process the form data
