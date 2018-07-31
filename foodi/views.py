@@ -115,6 +115,7 @@ class DiaryData(APIView):
         user = auth.get_user(request)
         date = request.GET['date']
         data = {}
+        total_day_calories = 0
         for x in user.profile.diaries.filter(date_eaten=date):
             data[x.food.name] = x.servings
 

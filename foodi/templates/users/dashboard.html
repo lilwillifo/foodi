@@ -15,7 +15,7 @@
                 <div class="dashboard-counter">
                     <p class="counter-count">{{ user.profile.diaries.count }}</p>
                     <p class="counter-text">Total Entries</p>
-                    <p>Way to go!</p>
+                    <p>Way to go! Keep logging your food daily to track your progress on Foodi.</p>
                 </div>
             </div>
 
@@ -23,8 +23,9 @@
                 <div class="dashboard-counter">
                     <p class="counter-count">{{ avg_cal }}</p>
                     <p class="counter-text">Average Daily Calories</p>
+                    <p>A calorie is a unit of energy. It's a way of describing how much energy your body could get from eating or drinking something.</p>
                     {% if avg_cal < 1200 %}
-                    <p>This looks low! Have you been entering all your meals?</p>
+                    <p class="error">This looks low! Have you been entering all your meals?</p>
                     {% endif %}
                 </div>
             </div>
@@ -33,6 +34,7 @@
                 <div class="dashboard-counter">
                     <p class="counter-count">{{ avg_protein }}</p>
                     <p class="counter-text">Average Daily Protein(g)</p>
+                    <p> Proteins grow, maintain, and replace the tissues in our bodies. Our muscles, organs, and immune systems are mostly made of protein.</p>
                 </div>
             </div>
         </div>

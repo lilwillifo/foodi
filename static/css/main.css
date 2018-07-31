@@ -5,6 +5,10 @@ body {
   margin: 50px;
 }
 
+a {
+  color: #00b3b3;
+}
+
 .text-center {
   padding-left: 40%;
   padding-right: 40%;
@@ -12,6 +16,11 @@ body {
 .logo {
   height: 100px;
   width: 200px;
+}
+
+.diary-text {
+  line-height: 2;
+  font-size: 20px;
 }
 
 .error {
@@ -72,6 +81,10 @@ tr:first-child td {
   background: #00b3b3;
   border: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, .5) inset;
+}
+
+.btn-secondary {
+  background-color: #00b3e7;
 }
 
 /*==========================================================
