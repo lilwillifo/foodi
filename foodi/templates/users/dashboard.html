@@ -5,31 +5,73 @@
 <hr>
 <hr>
 <hr>
-<!-- Marketing messaging and featurettes
-================================================== -->
-<!-- Wrap the rest of the page in another container to center all the content. -->
 
+<!-- Here is the section -->
+
+<div class="counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="dashboard-counter">
+                    <p class="counter-count">{{ user.profile.diaries.count }}</p>
+                    <p class="counter-text">Total Entries</p>
+                    <p>Way to go! Keep logging your food daily to track your progress on Foodi.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="dashboard-counter">
+                    <p class="counter-count">{{ avg_cal }}</p>
+                    <p class="counter-text">Average Daily Calories</p>
+                    <p>A calorie is a unit of energy. It's a way of describing how much energy your body could get from eating or drinking something.</p>
+                    {% if avg_cal < 1200 %}
+                    <p class="error">This looks low! Have you been entering all your meals?</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="dashboard-counter">
+                    <p class="counter-count">{{ avg_protein }}</p>
+                    <p class="counter-text">Average Daily Protein(g)</p>
+                    <p> Proteins grow, maintain, and replace the tissues in our bodies. Our muscles, organs, and immune systems are mostly made of protein.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+   <!-- Wrap the rest of the page in another container to center all the content. -->
 <div class="container marketing">
 
-  <!-- Three columns of text below the carousel -->
   <div class="row">
     <div class="col-lg-6">
-      <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
       <h2>Diary</h2>
       <p>See your daily entries here and track your progress against your daily calorie goal.</p>
       <p><a class="btn btn-secondary" href="{% url 'diary' %}" role="button">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
+    </div>
     <div class="col-lg-6">
-      <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
       <h2>NutriAnalysis</h2>
       <p>Addicted to sugar? Not getting enough protein? Track your nutrient inake here.</p>
-      <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
-  </div><!-- /.row -->
+      <p><a class="btn btn-secondary" href="{% url 'analytics' %}" role="button">View details »</a></p>
+    </div>
+  </div>
 
+</div>
+{% endblock %}
 
-
-
-</div><!-- /.container -->
-
+{% block jquery %}
+$('.counter-count').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 3000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
 {% endblock %}

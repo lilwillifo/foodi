@@ -79,7 +79,7 @@
     <h3> Add it again! </h3>
     <ul>
       {% for x in top_foods %}
-      <li><a href="{% url 'search' %}?query={{x.0}}">{{ x.0 }}</a></li>
+      <li><a class="diary-text" href="{% url 'search' %}?query={{x.0}}">{{ x.0 }}</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -93,7 +93,7 @@ $( "td" ).click(function() {
   $( ".selected" ).toggleClass( "selected" );
   $( this ).toggleClass( "selected" );
   $( ".food-list" ).empty();
-  $( ".food-list" ).append("<h3>Foods eaten on July "+this.textContent+"</h3><ul>");
+  $( ".food-list" ).append("<h3>July "+this.textContent+", 2018 Diary</h3><ul>");
   $.ajax({
       method: "GET",
       url: endpoint,
@@ -110,7 +110,7 @@ $( "td" ).click(function() {
   })
   function dailyFood() {
     Object.keys(entries).forEach(function(name){
-      $( ".food-list" ).append("<li>"+name+": "+entries[name]+" servings</li>")
+      $( ".food-list" ).append("<li class='diary-text'>"+name+": "+entries[name]+" servings</li>")
     })
     $( ".food-list" ).append("</ul>")
   }

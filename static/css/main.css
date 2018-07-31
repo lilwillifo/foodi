@@ -4,9 +4,11 @@ body {
   line-height: 1;
   margin: 50px;
 }
-h1{
 
+a {
+  color: #00b3b3;
 }
+
 .text-center {
   padding-left: 40%;
   padding-right: 40%;
@@ -14,6 +16,11 @@ h1{
 .logo {
   height: 100px;
   width: 200px;
+}
+
+.diary-text {
+  line-height: 2;
+  font-size: 20px;
 }
 
 .error {
@@ -74,4 +81,48 @@ tr:first-child td {
   background: #00b3b3;
   border: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, .5) inset;
+}
+
+.btn-secondary {
+  background-color: #00b3e7;
+}
+
+/*==========================================================
+               counter section style
+============================================================*/
+
+.counter
+{
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.dashboard-counter
+{
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+.counter-count
+{
+    font-size: 18px;
+    background-color: #00b3e7;
+    border-radius: 50%;
+    position: relative;
+    color: #ffffff;
+    text-align: center;
+    line-height: 92px;
+    width: 92px;
+    height: 92px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: inline-block;
+}
+
+.counter-text
+{
+    font-size: 24px;
+    color: #000000;
+    line-height: 34px;
 }
