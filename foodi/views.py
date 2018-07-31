@@ -130,10 +130,9 @@ class ChartData(APIView):
             total_carbs = user.profile.foods.aggregate(Sum('carbs'))['carbs__sum']
             total_protein = user.profile.foods.aggregate(Sum('protein'))['protein__sum']
             total_calories = user.profile.foods.aggregate(Sum('calories'))['calories__sum']
+            top_5 = user.profile.top_5_foods()
             for food in user.profile.foods.all():
                 calories[food.name] = food.calories
-                food_count[food.name] = user.profile.diaries.filter(food=food).aggregate(total_servings=Sum('servings'))['total_servings']
-            top_5 = Counter(food_count).most_common()[:5]
 
         calories = sorted(calories.items(), key=lambda x: x[1])
         calories = dict(calories)
