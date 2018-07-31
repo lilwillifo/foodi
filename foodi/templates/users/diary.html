@@ -81,23 +81,22 @@
 {% block jquery %}
 var endpoint = '/diaries'
 
-$.ajax({
-    method: "GET",
-    url: endpoint,
-    success: function(data){
-        diaries = data.diaries
-        debugger;
-    // console.log(data)
-    },
-    error: function(error_data){
-        console.log("error")
-        console.log(error_data)
-    },
-})
-
 $( "td" ).click(function() {
   $( ".selected" ).toggleClass( "selected" );
   $( this ).toggleClass( "selected" );
+  $.ajax({
+      method: "GET",
+      url: endpoint,
+      data: {date: "2018-07-"+ this.textContent },
+      success: function(data){
+        foods = data.foods
+      // console.log(data)
+      },
+      error: function(error_data){
+          console.log("error")
+          console.log(error_data)
+      },
+  })
   $( ".container" ).append("<h3>Foods eaten on July "+this.textContent+"</h3>");
 });
 {% endblock%}
