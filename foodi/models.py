@@ -55,6 +55,12 @@ class Food(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     foods = models.ManyToManyField(Food, through='Diary', related_name='users')
+    def top_5_foods(self):
+        for food in self.foods.all():
+            calories[food.name] = food.calories
+            food_count[food.name] = self.diaries.filter(food=food).aggregate(total_servings=Sum('servings'))['total_servings']
+        top_5 = Counter(food_count).most_common()[:5]
+        return top_5
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
