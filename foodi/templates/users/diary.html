@@ -69,7 +69,7 @@
   </table>
 </div>
 
-<div class="container marketing">
+<div class="container marketing food-list">
 </div>
 <br>
 {% endblock %}
@@ -79,7 +79,8 @@ var endpoint = '/diaries'
 $( "td" ).click(function() {
   $( ".selected" ).toggleClass( "selected" );
   $( this ).toggleClass( "selected" );
-  $( ".container" ).append("<h3>Foods eaten on July "+this.textContent+"</h3><ul>");
+  $( ".food-list" ).empty();
+  $( ".food-list" ).append("<h3>Foods eaten on July "+this.textContent+"</h3><ul>");
   $.ajax({
       method: "GET",
       url: endpoint,
@@ -96,9 +97,9 @@ $( "td" ).click(function() {
   })
   function dailyFood() {
     Object.keys(entries).forEach(function(name){
-      $( ".container" ).append("<li>"+name+": "+entries[name]+" servings</li>")
+      $( ".food-list" ).append("<li>"+name+": "+entries[name]+" servings</li>")
     })
-    $( ".container" ).append("</ul>")
+    $( ".food-list" ).append("</ul>")
   }
 });
 {% endblock%}
