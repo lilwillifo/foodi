@@ -5,31 +5,73 @@
 <hr>
 <hr>
 <hr>
-<!-- Marketing messaging and featurettes
-================================================== -->
-<!-- Wrap the rest of the page in another container to center all the content. -->
 
+<!-- Here is the section -->
+
+<div class="counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="dashboard-counter">
+                    <p class="counter-count">{{ user.profile.diaries.count }}</p>
+                    <p class="counter-text">Total Entries</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="dashboard-counter">
+                    <p class="counter-count">954</p>
+                    <p class="counter-text">Average Daily Calories</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="dashboard-counter">
+                    <p class="counter-count">1050</p>
+                    <p class="counter-text">Design</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="dashboard-counter">
+                    <p class="counter-count">652</p>
+                    <p class="counter-text">Orders</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   <!-- Wrap the rest of the page in another container to center all the content. -->
 <div class="container marketing">
 
-  <!-- Three columns of text below the carousel -->
   <div class="row">
     <div class="col-lg-6">
-      <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
       <h2>Diary</h2>
       <p>See your daily entries here and track your progress against your daily calorie goal.</p>
       <p><a class="btn btn-secondary" href="{% url 'diary' %}" role="button">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
+    </div>
     <div class="col-lg-6">
-      <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
       <h2>NutriAnalysis</h2>
       <p>Addicted to sugar? Not getting enough protein? Track your nutrient inake here.</p>
       <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
-  </div><!-- /.row -->
+    </div>
+  </div>
 
+</div>
+{% endblock %}
 
-
-
-</div><!-- /.container -->
-
+{% block jquery %}
+$('.counter-count').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 3000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
 {% endblock %}
