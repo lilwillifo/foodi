@@ -98,9 +98,18 @@ def search(request):
     # import code; code.interact(local=dict(globals(), **locals()))
     return render(request, 'search.html', context)
 
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
+
+class DiaryData(APIView):
+    def get(self, request, format=None):
+        data = {
+            "test": 123
+        }
+
+        return Response(data)
 
 class ChartData(APIView):
 # can change these two variables down the road to enhance security, but for now just leave them blank

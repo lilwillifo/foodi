@@ -79,6 +79,22 @@
 <br>
 {% endblock %}
 {% block jquery %}
+var endpoint = '/diaries'
+
+$.ajax({
+    method: "GET",
+    url: endpoint,
+    success: function(data){
+        diaries = data.diaries
+        debugger;
+    // console.log(data)
+    },
+    error: function(error_data){
+        console.log("error")
+        console.log(error_data)
+    },
+})
+
 $( "td" ).click(function() {
   $( ".selected" ).toggleClass( "selected" );
   $( this ).toggleClass( "selected" );
