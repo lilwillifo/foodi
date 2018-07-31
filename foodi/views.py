@@ -106,11 +106,10 @@ from django.contrib.auth.models import User
 class DiaryData(APIView):
     def get(self, request, format=None):
         user = auth.get_user(request)
-        embed()
         date = request.GET['date']
-        data = {
-            "entries": entries
-        }
+        data = {}
+        for x in user.profile.diaries.filter(date_eaten=date):
+            data[x.food.name] = x.servings
 
         return Response(data)
 

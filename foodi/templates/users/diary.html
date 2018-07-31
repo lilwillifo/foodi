@@ -89,6 +89,7 @@ $( "td" ).click(function() {
       url: endpoint,
       data: {date: "2018-07-"+ this.textContent },
       success: function(data){
+        debugger;
         foods = data.foods
       // console.log(data)
       },
