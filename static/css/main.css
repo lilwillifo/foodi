@@ -23,8 +23,11 @@ h1{
 nav {
   background-color: #AEE0C5;
 }
+li {
+  list-style-type: none;
+}
 
-.calendar {
+.diary-calendar {
   background: rgba(0, 0, 0, .1);
   border-radius: 5px;
   box-sizing: border-box;

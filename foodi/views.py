@@ -23,7 +23,6 @@ def dashboard(request):
     return render(request, 'users/dashboard.html')
 
 def diary(request):
-    embed()
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -41,7 +40,10 @@ def diary(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        return render(request, 'users/diary.html')
+        user = auth.get_user(request)
+        foods = user.profile.top_5_foods()
+        context = {"top_foods": foods}
+        return render(request, 'users/diary.html', context)
 
 def signup(request):
     if request.method == 'POST':
