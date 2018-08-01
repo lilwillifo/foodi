@@ -15,7 +15,11 @@
                 <div class="dashboard-counter">
                     <p class="counter-count">{{ user.profile.diaries.count }}</p>
                     <p class="counter-text">Total Entries</p>
-                    <p>Way to go! Keep logging your food daily to track your progress on Foodi.</p>
+                    {% if user.profile.diaries.count == 0 %}
+                      <p> Nothin'?? Add food to your diary using the form in your nav bar!</p>
+                    {% else %}
+                      <p>Way to go! Keep logging your food daily to track your progress on Foodi.</p>
+                    {% endif %}
                 </div>
             </div>
 

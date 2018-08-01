@@ -21,8 +21,11 @@ def analytics(request):
 
 def dashboard(request):
     user = auth.get_user(request)
-    average_calories = user.profile.foods.aggregate(Sum('calories'))['calories__sum'] / 31
-    average_protein = user.profile.foods.aggregate(Sum('protein'))['protein__sum'] / 31
+    average_calories = 0
+    average_protein = 0
+    if user.profile.foods.count() > 0:
+        average_calories = user.profile.foods.aggregate(Sum('calories'))['calories__sum'] / 31
+        average_protein = user.profile.foods.aggregate(Sum('protein'))['protein__sum'] / 31
     context = {'avg_cal': int(average_calories), 'avg_protein': int(average_protein) }
     return render(request, 'users/dashboard.html', context)
 
@@ -130,6 +133,11 @@ class ChartData(APIView):
         calories = dict()
         food_count = dict()
         user = auth.get_user(request)
+        total_fat = 0
+        total_carbs = 0
+        total_protein = 0
+        total_calories = 0
+        top_5 = []
         if user.profile.foods.count() > 0:
             total_fat = user.profile.foods.aggregate(Sum('total_fat'))['total_fat__sum']
             total_carbs = user.profile.foods.aggregate(Sum('carbs'))['carbs__sum']

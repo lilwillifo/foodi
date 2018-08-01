@@ -76,12 +76,16 @@
     <div class="container marketing food-list"></div>
   </div>
   <div class="col-lg-4">
-    <h3> Add it again! </h3>
-    <ul>
-      {% for x in top_foods %}
-      <li><a class="diary-text" href="{% url 'search' %}?query={{x.0}}">{{ x.0 }}</a></li>
-      {% endfor %}
-    </ul>
+    {% if top_foods %}
+      <h3> Add it again! </h3>
+      <ul>
+        {% for x in top_foods %}
+        <li><a class="diary-text" href="{% url 'search' %}?query={{x.0}}">{{ x.0 }}</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <h3> Nothing to see here folks. Add food using the tool in the nav bar!</h3>
+    {% endif %}
   </div>
 </div>
 <br>
