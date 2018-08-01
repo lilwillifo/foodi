@@ -5,10 +5,10 @@
 <br>
 <br>
 <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<br>
+<br>
+<br>
+<br>
       <div class="row">
         <div class="col">
           <div class="card" >
@@ -60,7 +60,7 @@ $.ajax({
 function topFoods(){
   $( "#top_5" ).append("<ul>")
   top_5_foods.forEach(function(food){
-    $( "#top_5" ).append("<li>"+food[0]+" </li>")
+    $( "#top_5" ).append("<li class=".food">"+food[0]+" </li>")
   })
   $( "#top_5" ).append("</ul>" )
 }
