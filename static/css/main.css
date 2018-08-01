@@ -46,10 +46,7 @@ header {
   position: relative;
 }
 
-button {
-  position: absolute;
-  top: -4px;
-}
+
 button:first-child {
   left: 0;
 }
