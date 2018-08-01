@@ -73,7 +73,6 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
-@login_required
 def search(request):
     search_result = {}
     food = request.GET['query']
