@@ -36,10 +36,11 @@ Foodi allows users to track their eating habits and nutrition. Use the search ba
   python3 manage.py populate_db
   ```
 
-5. Run test suite
+5. Run test suite (unit and feature tests)
 
   ```shell
     python3 manage.py test
+    python3 manage.py behave
   ```
 
 ### Prerequisites
@@ -74,6 +75,7 @@ Create a new branch on your local machine to make your changes against (based on
 Make sure the tests pass on your new branch:
 
     `python3 manage.py test`
+    `python3 manage.py behave`
 
 ### Making a change
 
@@ -107,6 +109,7 @@ TL;DR:
 * [Django Rest Framework](http://www.django-rest-framework.org/) - Backend API to feed data to Plotly
 * [JQuery](https://jquery.com/) - Asynchronous loading of charts
 * [Bootstrap](https://getbootstrap.com/) - Bootstrap for styling
+* [Behave-Django](https://github.com/behave/behave-django) - Django package for BDD testing
 
 
 ## Authors
