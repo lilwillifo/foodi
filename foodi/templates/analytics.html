@@ -1,35 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-      <div class="row">
-        <div class="col">
-          <div class="card" >
-            <img class="card-img-top" src="https://asset1.cxnmarksandspencer.com/is/image/mands/52b9525889284ac5d20b7a268ff0d478d8c368d7?$editorial_580x580$" alt="Food">
-            <div class="card-body">
-              <h5 class="card-title">Top Foods:</h5>
-              <p class="card-text"  id="top_5"></p>
-              <a href="/diary" class="btn btn-primary">Add to your Diary</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-5">
-          <div id="calories"></div>
-        </div>
-        <div class="col-4">
-          <div id="nutrients"></div>
-        </div>
+<div class="row">
+  <div class="col">
+    <div class="card" >
+      <img class="card-img-top" src="https://asset1.cxnmarksandspencer.com/is/image/mands/52b9525889284ac5d20b7a268ff0d478d8c368d7?$editorial_580x580$" alt="Food">
+      <div class="card-body">
+        <h5 class="card-title">Top Foods:</h5>
+        <p class="card-text"  id="top_5"></p>
+        <a href="/diary" class="btn btn-primary">Add to your Diary</a>
+      </div>
     </div>
-    <br>
-    <br>
-    <br>
+  </div>
+  <div class="col-5">
+    <div id="calories"></div>
+  </div>
+  <div class="col-4">
+    <div id="nutrients"></div>
+  </div>
+</div>
+<br>
+<br>
+<br>
 {% endblock %}
 
 {% block jquery %}

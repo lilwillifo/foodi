@@ -7,7 +7,12 @@
 <br>
 
 <!-- Here is the section -->
-
+<div class="row">
+  <div class="col">
+    <h1 class="text-center">Welcome!</h1>
+    <h3 class="text-center">Add food using the tool in the nav bar! ☝️</h3>
+  </div>
+</div>
 <div class="counter">
     <div class="container">
         <div class="row">
@@ -15,7 +20,11 @@
                 <div class="dashboard-counter">
                     <p class="counter-count">{{ user.profile.diaries.count }}</p>
                     <p class="counter-text">Total Entries</p>
-                    <p>Way to go! Keep logging your food daily to track your progress on Foodi.</p>
+                    {% if user.profile.diaries.count == 0 %}
+                      <p> Nothin'?? Add food to your diary using the form in your nav bar!</p>
+                    {% else %}
+                      <p>Way to go! Keep logging your food daily to track your progress on Foodi.</p>
+                    {% endif %}
                 </div>
             </div>
 

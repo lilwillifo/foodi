@@ -9,23 +9,33 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import DiaryForm
 from django.contrib import messages
 from IPython import embed
-from django.db.models import Sum
+from django.db.models import Sum, Count
 from collections import Counter
+from django.contrib.auth.decorators import login_required
+
 
 def home(request):
     # import code; code.interact(local=dict(globals(), **locals()))
     return render(request, 'home.html')
 
+@login_required
 def analytics(request):
     return render(request, 'analytics.html')
 
+@login_required
 def dashboard(request):
     user = auth.get_user(request)
-    average_calories = user.profile.foods.aggregate(Sum('calories'))['calories__sum'] / 31
-    average_protein = user.profile.foods.aggregate(Sum('protein'))['protein__sum'] / 31
+    average_calories = 0
+    average_protein = 0
+    if user.profile.foods.count() > 0:
+        total_calories = user.profile.foods.aggregate(Sum('calories'))['calories__sum']
+        total_days = user.profile.diaries.values('date_eaten').distinct().count()
+        average_calories = total_calories / total_days
+        average_protein = user.profile.foods.aggregate(Sum('protein'))['protein__sum'] / total_days
     context = {'avg_cal': int(average_calories), 'avg_protein': int(average_protein) }
     return render(request, 'users/dashboard.html', context)
 
+@login_required
 def diary(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -63,6 +73,7 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
+@login_required
 def search(request):
     search_result = {}
     food = request.GET['query']
@@ -130,6 +141,11 @@ class ChartData(APIView):
         calories = dict()
         food_count = dict()
         user = auth.get_user(request)
+        total_fat = 0
+        total_carbs = 0
+        total_protein = 0
+        total_calories = 0
+        top_5 = []
         if user.profile.foods.count() > 0:
             total_fat = user.profile.foods.aggregate(Sum('total_fat'))['total_fat__sum']
             total_carbs = user.profile.foods.aggregate(Sum('carbs'))['carbs__sum']
