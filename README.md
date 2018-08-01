@@ -36,7 +36,10 @@ Foodi allows users to track their eating habits and nutrition. Use the search ba
   python3 manage.py populate_db
   ```
 
-5. Run test suite (unit and feature tests)
+5. Run test suite (unit and feature tests). You'll need the server running in a separate tab.
+  ```shell
+    python3 manage.py runserver
+  ```
 
   ```shell
     python3 manage.py test
