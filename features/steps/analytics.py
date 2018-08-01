@@ -9,9 +9,10 @@ from IPython import embed
 @given(u'there is a profile with top 5 five foods')
 def step_impl(context):
     for row in context.table:
-        foods = row['foods'].split(', ')
-        user = UserFactory(username=row['username'])
-        ProfileFactory(top_5_foods = foods)
+        food_names = row['foods'].split(', ')
+        foods = Food.objects.filter(name__in=food_names)
+        user = UserFactory(username=row['username'], foods=foods)
+        profile = user.profile
 
 @when(u'I go to my analytics')
 def step_impl(context):
@@ -22,4 +23,4 @@ def step_impl(context):
     foods = context.browser.find_by_css('.food')
     user = UserFactory(email='log.me.in@test.test')
 
-    assert len(foods) == 5
+    assert len(foods) == len(user.profile.top_5_foods())
